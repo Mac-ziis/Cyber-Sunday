@@ -32,4 +32,11 @@ describe('PotionManager', () => {
     expect(PotionManager.allPotions[1].name).toBe("Strength Elixir");
     expect(PotionManager.allPotions[1].effect).toBe("Increases attack damage by 10");
   });
+
+  test("should not add a potion with missing properties to allPotions", () => {
+    const potionObject = { effect: "Invalid Potion" };
+    PotionManager.addPotion(potionObject);
+
+    expect(PotionManager.allPotions).toHaveLength(0);
+  })
 });
