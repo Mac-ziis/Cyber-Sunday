@@ -25,5 +25,19 @@ describe("Potion", () => {
     potion.applyEffect(target);
     expect(target.attackPower).toBe(60);
   });
+
+  test('Should restore 25 mana points to the target', () => {
+    const target = {mana: 75};
+    const potion = new Potion("Mana Elixir", "Restores 25 mana points");
+    potion.applyEffect(target);
+    expect(target.mana).toBe(100);
+  });
+
+  test("It will not apply any effects because the potion does not exist", () => {
+    const target = {};
+    const potion = new Potion("Invalid potion", "Invalid effect");
+    potion.applyEffect(target);
+    expect(target).toEqual({});
+  });
 });
 
